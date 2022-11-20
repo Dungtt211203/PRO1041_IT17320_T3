@@ -35,7 +35,7 @@ public class ACCOUNTServiceimpl implements ACCOUNTService {
         this.aRepo.delete(id);
     }
 
-    public ArrayList<ACCOUNTVM> getListACC() {
+    public ArrayList<ACCOUNTVM> getALL() {
         return this.aRepo.all();
     }
 

@@ -15,21 +15,27 @@ import java.util.ArrayList;
  *
  * @author MyPC
  */
-public class MauSacServiceImpl implements MauSacService{
+public class MauSacServiceImpl implements MauSacService {
+
     private MauSacReponsitory mRepo;
-    public MauSacServiceImpl(){
-        this.mRepo=new MauSacReponsitory();
+
+    public MauSacServiceImpl() {
+        this.mRepo = new MauSacReponsitory();
     }
-    public void insert(MauSac m){
+
+    public void insert(MauSac m) {
         this.mRepo.insert(m);
     }
-    public void update(MauSac m,String id){
+
+    public void update(MauSac m, String id) {
         this.mRepo.update(m, id);
     }
-    public void delete(String id){
+
+    public void delete(String id) {
         this.mRepo.delete(id);
     }
-    public ArrayList<MauSacViewModel> getAll(){
+
+    public ArrayList<MauSacViewModel> getAll() {
         return this.mRepo.getAll();
     }
 }

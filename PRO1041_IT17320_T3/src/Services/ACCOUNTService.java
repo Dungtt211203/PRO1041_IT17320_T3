@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public interface ACCOUNTService {
 
-    ArrayList<ACCOUNTVM> getListACC();
+    ArrayList<ACCOUNTVM> getALL();
 
     void insert(ACCOUNT a);
 

@@ -30,14 +30,14 @@ public class ACCOUNTForm extends javax.swing.JFrame {
         this.ClearForm();
     }
 
-    public void getData() {
-        DefaultTableModel dtm = (DefaultTableModel) this.tbACCOUNT.getModel();
+    public void getData(){
+        DefaultTableModel dtm=(DefaultTableModel) this.tbACCOUNT.getModel();
         dtm.setRowCount(0);
-        for (ACCOUNTVM s : this.aService.getListACC()) {
-            Object[] rowdata = {
-                s.getId(), s.getTenCV(), s.getMk()
+        for (ACCOUNTVM a : this.aService.getALL()) {
+            Object[] rowData={
+                a.getId(),a.getTenCV(),a.getMk()
             };
-            dtm.addRow(rowdata);
+            dtm.addRow(rowData);
         }
     }
 
@@ -90,7 +90,7 @@ public class ACCOUNTForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Id");
+        jLabel2.setText("ID");
 
         jLabel3.setText("TenChucVu");
 
@@ -104,7 +104,7 @@ public class ACCOUNTForm extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Id", "TenChucVu", "MatKhau"
+                "ID", "TenChucVu", "MatKhau"
             }
         ));
         tbACCOUNT.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,6 +203,7 @@ public class ACCOUNTForm extends javax.swing.JFrame {
         this.getData();
         JOptionPane.showMessageDialog(this, "Thêm thành công");
         this.ClearForm();
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed

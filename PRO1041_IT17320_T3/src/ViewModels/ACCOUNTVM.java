@@ -48,4 +48,9 @@ public class ACCOUNTVM {
         this.mk = mk;
     }
 
+    @Override
+    public String toString() {
+        return "ACCOUNTVM{" + "id=" + id + ", tenCV=" + tenCV + ", mk=" + mk + '}';
+    }
+
 }

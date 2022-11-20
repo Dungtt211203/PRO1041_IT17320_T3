@@ -14,9 +14,12 @@ import java.util.ArrayList;
  * @author MyPC
  */
 public interface MauSacService {
+
     ArrayList<MauSacViewModel> getAll();
-    
+
     void insert(MauSac m);
+
     void update(MauSac m, String id);
+
     void delete(String id);
 }

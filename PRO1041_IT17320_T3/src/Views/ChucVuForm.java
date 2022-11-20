@@ -224,7 +224,7 @@ public class ChucVuForm extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(ChucVuForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        idwhenclick = " ";
+        idwhenclick = "";
         LoadTable();
     }//GEN-LAST:event_btnxoaActionPerformed
 

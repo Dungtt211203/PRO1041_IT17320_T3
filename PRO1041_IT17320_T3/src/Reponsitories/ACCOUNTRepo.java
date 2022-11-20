@@ -20,11 +20,11 @@ public class ACCOUNTRepo {
 
     public void insert(ACCOUNT a) {
         try {
-            Connection conn = Util.DBContext.getConnection();
+            Connection conn = Util.DBContext1.getConnection();
             String sql = "INSERT INTO ACCOUNT" + "(TenChucVu,MatKhau)" + "VALUES(?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, a.getTenCV());
-            ps.setString(2, a.getMk());
+            ps.setString(1, a.getMk());
+            ps.setString(2, a.getTenCV());
             ps.execute();
             System.out.println("Thêm thành công");
         } catch (Exception e) {
@@ -34,8 +34,8 @@ public class ACCOUNTRepo {
 
     public void update(ACCOUNT a, String id) {
         try {
-            Connection conn = Util.DBContext.getConnection();
-            String sql = "UPDATE ACCOUNT SET " + "TenChucVu=?,MatKhau=? WHERE Id=?";
+            Connection conn = Util.DBContext1.getConnection();
+            String sql = "UPDATE ACCOUNT SET" + "TenChucVu=?,MatKhau=? WHERE Id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, a.getTenCV());
             ps.setString(2, a.getMk());
@@ -49,8 +49,8 @@ public class ACCOUNTRepo {
 
     public void delete(String id) {
         try {
-            Connection conn = Util.DBContext.getConnection();
-            String sql = "DELETE FROM ACCOUNT WHERE id=?";
+            Connection conn = Util.DBContext1.getConnection();
+            String sql = "DELETE FROM ACCOUNT WHERE Id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             ps.executeUpdate();
@@ -63,7 +63,7 @@ public class ACCOUNTRepo {
     public ArrayList<ACCOUNTVM> all() {
         ArrayList<ACCOUNTVM> listACC = new ArrayList<>();
         try {
-            Connection conn = Util.DBContext.getConnection();
+            Connection conn = Util.DBContext1.getConnection();
             String sql = "SELECT * FROM ACCOUNT";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.execute();
@@ -71,7 +71,7 @@ public class ACCOUNTRepo {
             while (rs.next()) {
                 String id = rs.getString("Id");
                 String ten = rs.getString("TenChucVu");
-                String mk = rs.getString("mk");
+                String mk = rs.getString("MatKhau");
                 ACCOUNT a = new ACCOUNT(id, mk, ten);
             }
             System.out.println("Truy vấn thành công");
