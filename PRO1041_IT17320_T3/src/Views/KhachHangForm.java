@@ -45,9 +45,9 @@ public class KhachHangForm extends javax.swing.JFrame {
 
     public String getTrangThai(int trangThai) {
         if (trangThai == 1) {
-            return "Đi Làm";
+            return "Đã thanh toán";
         } else if (trangThai == 2) {
-            return "Nghỉ Làm";
+            return "Chưa thanh toán";
         } else {
             return null;
         }
