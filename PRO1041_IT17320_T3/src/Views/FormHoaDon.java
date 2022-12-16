@@ -35,7 +35,7 @@ public class FormHoaDon extends javax.swing.JFrame {
     public void getData() {
         DefaultTableModel dmt = (DefaultTableModel) tbl_hoaDon.getModel();
         dmt.setRowCount(0);
-        for (HoaDonViewModel x : service.getAll()) {
+        for (HoaDonViewModel x : service.GetAll()) {
             dmt.addRow(new Object[]{
                 x.getId(), x.getMa(), 
                 x.getNgayThanhToan(), getTinhTrang(x.getTinhTrang())
@@ -243,7 +243,7 @@ public class FormHoaDon extends javax.swing.JFrame {
         }else if (rdo_chuatt.isSelected()) {
             hd.setTinhTrang(2);
         }
-        this.service.add(hd);
+        this.service.them(hd);
         this.getData();
         JOptionPane.showMessageDialog(this, "Thêm thành công");
     }//GEN-LAST:event_btn_themActionPerformed

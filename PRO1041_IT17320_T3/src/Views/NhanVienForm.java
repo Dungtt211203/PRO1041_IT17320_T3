@@ -29,20 +29,20 @@ public class NhanVienForm extends javax.swing.JFrame {
         initComponents();
         Service = new NhanVienServiceImpl();
         this.setLocationRelativeTo(null);
-        LoadTable();
+        LoadTableNV();
     }
 
-    public void LoadTable(){
+    public void LoadTableNV(){
         defaultTableModel = (DefaultTableModel) tbNV.getModel();
         defaultTableModel.setRowCount(0);
         for (NhanVienViewModel x : Service.GetAll()) {
             defaultTableModel.addRow(new Object[]{
-                x.getId(), x.getIdCV(), x.getManv(), x.getTennv(), x.getEmail(), x.getNgaySinh(), x.getGioiTinh(), x.getSdt(), x.getDiaChi(), TrangThai(x.getTrangThai())
+                x.getId(), x.getIdCV(), x.getManv(), x.getTennv(), x.getEmail(), x.getNgaySinh(), x.getGioiTinh(), x.getSdt(), x.getDiaChi(), TrangThaiNV(x.getTrangThai())
             });
         }
     }
     
-    public String TrangThai(int tt){
+    public String TrangThaiNV(int tt){
         if (tt == 0) {
             return "Đi làm";
         } else if (tt == 1) {
@@ -52,7 +52,7 @@ public class NhanVienForm extends javax.swing.JFrame {
         }
     }
     
-    public NhanVien GetDataFromGui(){
+    public NhanVien GetDataFromGuiNV(){
         int gioitinh;
         if (rdNam.isSelected()) {
             gioitinh = 0;
@@ -284,18 +284,18 @@ public class NhanVienForm extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, Service.Add(GetDataFromGui()));
-        LoadTable();
+        JOptionPane.showMessageDialog(this, Service.Add(GetDataFromGuiNV()));
+        LoadTableNV();
         Clear();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        NhanVien temp = GetDataFromGui();
+        NhanVien temp = GetDataFromGuiNV();
         temp.setId(idwhenclick);
         JOptionPane.showMessageDialog(this, Service.Update(temp));
         idwhenclick = " ";
-        LoadTable();
+        LoadTableNV();
         Clear();
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -305,7 +305,7 @@ public class NhanVienForm extends javax.swing.JFrame {
         temp.setId(idwhenclick);
         JOptionPane.showMessageDialog(this, Service.Delete(temp));
         idwhenclick = " ";
-        LoadTable();
+        LoadTableNV();
         Clear();
     }//GEN-LAST:event_btnXoaActionPerformed
 

@@ -20,8 +20,8 @@ public interface HoaDonService {
 
     String them(HoaDon hd);
 
-    public void add(HoaDon hd);
-
-    public Iterable<HoaDonViewModel> getAll();
+//    public void add(HoaDon hd);
+//
+//    public Iterable<HoaDonViewModel> getAll();
 
 }

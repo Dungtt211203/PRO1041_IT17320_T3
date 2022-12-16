@@ -28,13 +28,13 @@ public class KhachHangForm extends javax.swing.JFrame {
 
     public KhachHangForm() {
         initComponents();
-        rdGioiTinh();
-        rdTrangThai();
-        getData();
+        rdGioiTinhKH();
+        rdTrangThaiKH();
+        getDataKH();
         this.setLocationRelativeTo(null);
     }
 
-    public String getGioiTinh(int gioiTinh) {
+    public String getGioiTinhKH(int gioiTinh) {
         if (gioiTinh == 1) {
             return "Nam";
         } else if (gioiTinh == 2) {
@@ -44,7 +44,7 @@ public class KhachHangForm extends javax.swing.JFrame {
         }
     }
 
-    public String getTrangThai(int trangThai) {
+    public String getTrangThaiKH(int trangThai) {
         if (trangThai == 1) {
             return "Khách Hàng Cũ";
         } else if (trangThai == 2) {
@@ -54,22 +54,22 @@ public class KhachHangForm extends javax.swing.JFrame {
         }
     }
 
-    public void rdGioiTinh() {
+    public void rdGioiTinhKH() {
         buttonGroupg.add(rdNam);
         buttonGroupg.add(rdNu);
     }
 
-    public void rdTrangThai() {
+    public void rdTrangThaiKH() {
         buttonGroupt.add(rdCu);
         buttonGroupt.add(rdMoi);
     }
 
-    public void getData() {
+    public void getDataKH() {
         DefaultTableModel dtm = (DefaultTableModel) this.tbKhachHang.getModel();
         dtm.setRowCount(0);
         for (KhachHangVM kh : this.khService.getall()) {
             Object[] rowData = {
-                kh.getId(), kh.getMaKH(), kh.getTenKH(), getGioiTinh(kh.getGioiTinh()), kh.getSdt(), kh.getDiaChi(), getTrangThai(kh.getTrangThai())
+                kh.getId(), kh.getMaKH(), kh.getTenKH(), getGioiTinhKH(kh.getGioiTinh()), kh.getSdt(), kh.getDiaChi(), getTrangThaiKH(kh.getTrangThai())
             };
             dtm.addRow(rowData);
         }
@@ -319,7 +319,7 @@ public class KhachHangForm extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        KhachHang kh=this.getLoadData();
+        KhachHang kh=this.getLoadDataKH();
         if(kh==null){
             return;
         }
@@ -337,7 +337,7 @@ public class KhachHangForm extends javax.swing.JFrame {
         }
         
         this.khService.insert(kh);
-        getData();
+        getDataKH();
         JOptionPane.showMessageDialog(this, "Thêm Thành Công");
         
         
@@ -349,7 +349,7 @@ public class KhachHangForm extends javax.swing.JFrame {
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Hãy chọn dòng cần sửa");
         }
-        KhachHang kh = this.getLoadData();
+        KhachHang kh = this.getLoadDataKH();
         if (kh == null) {
             return;
         }
@@ -365,8 +365,8 @@ public class KhachHangForm extends javax.swing.JFrame {
             kh.setTrangThai(2);
         }
         this.khService.update(kh, kh.getId());
-        this.getData();
-        this.clear();
+        this.getDataKH();
+        this.clearKH();
         JOptionPane.showMessageDialog(this, "Sửa thành công");
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -380,8 +380,8 @@ public class KhachHangForm extends javax.swing.JFrame {
             if (confirm == JOptionPane.YES_NO_OPTION) {
                 String id = tbKhachHang.getValueAt(row, 0).toString();
                 this.khService.delete(id);
-                this.getData();
-                this.clear();
+                this.getDataKH();
+                this.clearKH();
             }
         }
         JOptionPane.showMessageDialog(this, "Xóa thành công");
@@ -410,7 +410,7 @@ public class KhachHangForm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    private KhachHang getLoadData() {
+    private KhachHang getLoadDataKH() {
         String id = this.lblId.getText();
         String ma = this.txtMa.getText().trim();
         String ten = this.txtTen.getText().trim();
@@ -425,7 +425,7 @@ public class KhachHangForm extends javax.swing.JFrame {
         return kh;
     }
 
-    private void clear() {
+    private void clearKH() {
         lblId.setText("");
         txtMa.setText("");
         txtTen.setText("");
